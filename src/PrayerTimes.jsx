@@ -2,41 +2,48 @@ import { useState } from "react";
 
 function PrayerTimes() {
   const [city, setCity] = useState("");   
-  const [times, setTimes] = useState(null); 
-const fetchTime = async () => {
-  try {
-    const response = await fetch(
-      `https://worldtimeapi.org/api/timezone/${city}`
-    );
-    const data = await response.json();
+  const [prayers, setPrayers] = useState(null);
 
-    const datetime = data.datetime;
+  const fetchPrayers = async () => {
+    try {
+      const response = await fetch(
+        `https://api.aladhan.com/v1/timingsByCity?city=${city}&country=Algeria&method=2`
+      );
+      if (!response.ok) throw new Error("City not found");
+      const data = await response.json();
 
-    const onlyTime = datetime.split("T")[1].split("+")[0]; // "21:45:30"
-    const [hour, minute] = onlyTime.split(":"); // ["21", "45", "30"]
-    const shortTime = `${hour}:${minute}`; // "21:45"
-
-    setTimes(shortTime);
-  } catch (err) {
-    setTimes("Error: timezone not found");
-  }
-};
+      setPrayers(data.data.timings);
+    } catch (err) {
+      setPrayers(null);
+    }
+  };
 
   return (
-    <>
-      <div className="app">
-        <div className="first">
-          <input
-            type="text"
-            placeholder="Enter the timezone (Region/City)"
-            value={city}
-            onChange={(e) => setCity(e.target.value)} 
-          />
-          <button onClick={fetchTime}>Click here</button>
-          <h4 className="city">Current time: {times}</h4>
-        </div>
+    <div className="app">
+      <div className="first">
+        <input
+          type="text"
+          placeholder="Enter city (e.g. Algiers)"
+          value={city}
+          onChange={(e) => setCity(e.target.value)} 
+        />
+        <button onClick={fetchPrayers}>Click here</button>
       </div>
-    </>
+
+      <div className="second">
+        {prayers ? (
+          <ul>
+            <li>Fajr: {prayers.Fajr}</li>
+            <li>Dhuhr: {prayers.Dhuhr}</li>
+            <li>Asr: {prayers.Asr}</li>
+            <li>Maghrib: {prayers.Maghrib}</li>
+            <li>Isha: {prayers.Isha}</li>
+          </ul>
+        ) : (
+          <p>No data yet. Enter a city and click the button.</p>
+        )}
+      </div>
+    </div>
   );
 }
 
