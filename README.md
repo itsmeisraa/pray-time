@@ -1,16 +1,23 @@
-# React + Vite
+# 🕌 Prayer Times App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple React app that shows daily prayer times for any city using the **Aladhan API**.  
+The app features a clean card design and an animated green background with mosque silhouettes.  
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Features
+- Search prayer times by city  
+- Fetches data from [Aladhan API](https://aladhan.com/prayer-times-api)  
+- Clean, responsive card design  
+- Animated green mosque background for visual appeal  
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠️ Tech Stack
+- **React** (frontend)  
+- **CSS** (styling & animations)  
+- **Aladhan API** (prayer times data)  
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 📂 Project Structure
