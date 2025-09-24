@@ -1,0 +1,49 @@
+body{
+  display: flex;
+  justify-content: center;  /* center horizontally */
+  align-items: center;      /* center vertically */
+  height: 100vh;            /* full viewport height */
+  background: #f0f0f0;      /* just for contrast */
+  font-family:Arial, Helvetica, sans-serif, sans-serif;
+}
+
+/* Card style */
+.app{
+  background: white;
+  padding: 20px 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+  text-align: center;
+  transition-property: transform;
+transition-delay: 200ms;
+transition-duration: 800ms;
+}
+.app:hover{
+transform: translateY(-20%);
+box-shadow: 2px 0px 2px 2px rgb(200, 200, 200);
+}
+input{
+border-radius: 5px;
+border-style:none;
+background-color: rgb(224, 224, 224);
+padding: 5px;
+width: 193px;
+}
+button{
+  cursor: pointer;
+  border-radius: 5px;
+border-style:none;
+padding: 5px;
+margin-left: 5px;
+background: linear-gradient(to bottom, #c4f9b5, #4fa138);
+transition-property: transform;
+transition-delay: 200ms;
+transition-duration: 800ms;
+}
+button:hover{
+ transform: translateY(-20%);
+}
+.city{
+
+  margin-top: 30px;
+}
