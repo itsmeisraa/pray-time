@@ -17,32 +17,57 @@ function PrayerTimes() {
     }
   };
 
-  return (
-    <div className="app">
-      <div className="first">
-        <input
-          type="text"
-          placeholder="Enter city (e.g. Algiers)"
-          value={city}
-          onChange={(e) => setCity(e.target.value)}
-        />
-        <button onClick={fetchPrayers}>Click here</button>
-      </div>
+  const prayerOrder = ["Fajr", "Dhuhr", "Asr", "Maghrib", "Isha"];
 
-      <div className="second">
-        {prayers ? (
-          <ul>
-            <li>Fajr: {prayers.Fajr}</li>
-            <li>Dhuhr: {prayers.Dhuhr}</li>
-            <li>Asr: {prayers.Asr}</li>
-            <li>Maghrib: {prayers.Maghrib}</li>
-            <li>Isha: {prayers.Isha}</li>
-          </ul>
-        ) : (
-          <p>No data yet. Enter a city and click the button.</p>
-        )}
+  // Use real working external links
+  const prayerLinks = {
+    Fajr: "https://en.islamway.net/article/8163/fajr-prayer",
+    Dhuhr: "https://www.prayertimes.org/en/how-to-perform-dhuhr-prayer/",
+    Asr: "https://www.prayertimes.org/en/how-to-perform-dhuhr-prayer/", // replace with Asr-specific link
+    Maghrib: "https://www.prayertimes.org/en/how-to-perform-dhuhr-prayer/", // replace with Maghrib-specific link
+    Isha: "https://www.prayertimes.org/en/how-to-perform-dhuhr-prayer/", // replace with Isha-specific link
+  };
+
+  return (
+    <>
+      <h3 className="title">Prayer Times</h3>
+      <div className="card">
+      <div className="app">
+        <div className="first">
+          <input
+            type="text"
+            placeholder="Enter city (e.g. Algiers)"
+            value={city}
+            onChange={(e) => setCity(e.target.value)}
+          />
+          <button onClick={fetchPrayers}>Click here</button>
+        </div>
+
+        <div className="second">
+          {prayers ? (
+            <ul>
+              {prayerOrder.map((name) => (
+                <li key={name}>
+                  {name}: {prayers[name]}
+                  <a
+                    href={prayerLinks[name]}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="more-info"
+                  >
+                    Click here for more info
+                  </a>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p>No data yet. Enter a city and click the button.</p>
+          )}
+        </div>
+        <p>made by <a  href="https://github.com/itsmeisraa" className="israa">&#9829;</a>	 with israa chiheb </p>
       </div>
-    </div>
+      </div>
+    </>
   );
 }
 
