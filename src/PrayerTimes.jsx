@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 function PrayerTimes() {
-  const [city, setCity] = useState("");   
+  const [city, setCity] = useState("");
   const [prayers, setPrayers] = useState(null);
 
   const fetchPrayers = async () => {
@@ -11,7 +11,6 @@ function PrayerTimes() {
       );
       if (!response.ok) throw new Error("City not found");
       const data = await response.json();
-
       setPrayers(data.data.timings);
     } catch (err) {
       setPrayers(null);
@@ -25,7 +24,7 @@ function PrayerTimes() {
           type="text"
           placeholder="Enter city (e.g. Algiers)"
           value={city}
-          onChange={(e) => setCity(e.target.value)} 
+          onChange={(e) => setCity(e.target.value)}
         />
         <button onClick={fetchPrayers}>Click here</button>
       </div>

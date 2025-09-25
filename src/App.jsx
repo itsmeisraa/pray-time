@@ -1,12 +1,11 @@
-import PrayerTimes from './PrayerTimes.jsx'
+import PrayerTimes from "./PrayerTimes";
 
 function App() {
-
   return (
-    <>
-     <PrayerTimes/>
-    </>
-  )
+    <div className="relative h-screen w-screen flex justify-center items-center">
+      <PrayerTimes />
+    </div>
+  );
 }
 
-export default App
+export default App;

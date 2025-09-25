@@ -6,12 +6,13 @@ body {
   align-items: center;
   font-family: Arial, sans-serif;
 
-  /* Gradient background */
-  background: linear-gradient(to top, #2e7d32, #66bb6a);
+  /* Green gradient background */
+  background: linear-gradient(to top, #2e7d32 , #2e7d32 , rgb(52, 58, 52));
   overflow: hidden;
+  position: relative; /* important for layering */
 }
 
-/* Mosque silhouette at bottom */
+/* Mosque silhouettes at bottom */
 body::after {
   content: "";
   position: absolute;
@@ -23,20 +24,24 @@ body::after {
   background-size: contain;
   animation: moveMosque 20s linear infinite;
   opacity: 0.9;
+  z-index: 1; /* mosque layer */
 }
-/* ===== Card Style ===== */
+
+/* ===== PrayerTimes Card ===== */
 .app {
   background: white;
   padding: 20px 30px;
   border-radius: 16px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   text-align: center;
-  transition: all 0.4s ease-in-out;
+  position: relative;
+  z-index: 20; /* card stays above mosque + stars */
 }
+
 
 .app:hover {
   transform: translateY(-10px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
 /* ===== Input ===== */
@@ -72,14 +77,6 @@ button:hover {
   background: linear-gradient(to bottom, #8ce99a, #2b8a3e);
 }
 
-/* ===== City Title ===== */
-.city {
-  margin-top: 30px;
-  font-size: 18px;
-  font-weight: bold;
-  color: #333;
-}
-
 /* ===== Prayer List ===== */
 .second ul {
   list-style: none;
@@ -97,21 +94,18 @@ button:hover {
   color: #333;
   transition: background 0.3s;
 }
-
 .second li:hover {
   background: #e6fcf5;
+  cursor: pointer;
 }
 
-/* ===== Animation ===== */
+/* ===== Animations ===== */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
 @keyframes moveMosque {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
 }
